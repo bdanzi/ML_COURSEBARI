@@ -15,3 +15,5 @@ The command will produce:
 - ROC curves
 - Loss function vs Trainsize 
 - MLP score vs Trainsize 
+
+Examples of the plot produced are stored in the `Plots_NNtraining\` directory for the usage of a Multi Layer Perceptron (MLP) and a Boosted Decision Tree (BDT).
