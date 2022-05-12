@@ -11,9 +11,9 @@ In the `ML_COURSEBARI\` directory of this repository:
 $ python Classifier_FraBru.py
 ```
 
-The command will produce:
-- ROC curves
-- Loss function vs Trainsize 
-- MLP score vs Trainsize 
+The command will produce `.png` files:
+- ROC curves `ROC_results.png`
+- Loss function vs Trainsize `numbertrainingsamples_loss_mse.png`
+- MLP score vs Trainsize `numbertrainingsamples_MLP_score.png`
 
 Examples of the plot produced are stored in the `Plots_NNtraining\` directory for the usage of a Multi Layer Perceptron (MLP) and a Boosted Decision Tree (BDT) implemented by using scikit-learn package.
