@@ -16,4 +16,4 @@ The command will produce:
 - Loss function vs Trainsize 
 - MLP score vs Trainsize 
 
-Examples of the plot produced are stored in the `Plots_NNtraining\` directory for the usage of a Multi Layer Perceptron (MLP) and a Boosted Decision Tree (BDT).
+Examples of the plot produced are stored in the `Plots_NNtraining\` directory for the usage of a Multi Layer Perceptron (MLP) and a Boosted Decision Tree (BDT) implemented by using scikit-learn package.
