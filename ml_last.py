@@ -18,7 +18,7 @@ from keras.models import  Sequential
 from keras.layers import Dense, Dropout
 #from keras.layers import Dense   <<== gave errors
 from sklearn.metrics import roc_curve, auc, mean_squared_error  ## To show results
-from sklearn.ensemble import AdaBoostClassifier, GradientBoostingClassifier
+from sklearn.ensemble import AdaBoostClassifier, GradientBoostingClassifier, RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
 
@@ -155,6 +155,12 @@ plt.close()
 
 #bdt = AdaBoostClassifier(DecisionTreeClassifier(max_depth=1), algorithm="SAMME", n_estimators=700)
 bdt = GradientBoostingClassifier()
+rf = RandomForestClassifier( n_estimators=300,criterion='gini',
+                           verbose=0 , min_samples_split=200, 
+                           max_depth= 5,min_samples_leaf=500, 
+                           max_features=4, bootstrap=False,random_state=7 )
+rf.fit(x,y)
+
 bdt.fit(x,y)
 if EPOCHS < 100:  LOQUACIOUS=1
 cl1.fit(x,y,epochs=EPOCHS, batch_size=128, verbose=LOQUACIOUS, validation_split=0.1)#, callbacks = callback_list)
@@ -213,6 +219,13 @@ roc_auc_test_bdt = dict()
 fpr_train_bdt = dict()
 tpr_train_bdt = dict()
 roc_auc_train_bdt = dict()
+
+fpr_test_rf = dict()
+tpr_test_rf = dict()
+roc_auc_test_rf = dict()
+fpr_train_rf = dict()
+tpr_train_rf = dict()
+roc_auc_train_rf = dict()
 lw=2
 
 fpr_test, tpr_test, _ = roc_curve(ytst, OOBResults_test)
@@ -223,10 +236,18 @@ roc_auc_train = auc(fpr_train, tpr_train)
 y_score_test_bdt = bdt.predict_proba(xtst) # MLP prediction on test data
 y_score_training_bdt = bdt.predict_proba(x)# MLP prediction on training data
 
+y_score_test_rf = rf.predict_proba(xtst) # MLP prediction on test data
+y_score_training_rf = rf.predict_proba(x)# MLP prediction on training data
+
 fpr_test_bdt, tpr_test_bdt, _ = roc_curve(ytst, y_score_test_bdt[:,1])
 roc_auc_test_bdt = auc(fpr_test_bdt, tpr_test_bdt)
 fpr_train_bdt, tpr_train_bdt, _ = roc_curve(y, y_score_training_bdt[:,1])
 roc_auc_train_bdt = auc(fpr_train_bdt, tpr_train_bdt)
+
+fpr_test_rf, tpr_test_rf, _ = roc_curve(ytst, y_score_test_rf[:,1])
+roc_auc_test_rf = auc(fpr_test_rf, tpr_test_rf)
+fpr_train_rf, tpr_train_rf, _ = roc_curve(y, y_score_training_rf[:,1])
+roc_auc_train_rf = auc(fpr_train_rf, tpr_train_rf)
 
 score_mp_sig_test = []
 score_mp_sig_train = []
@@ -236,20 +257,28 @@ score_bdt_sig_test = []
 score_bdt_sig_train = []
 score_bdt_bkg_train = []
 score_bdt_bkg_test = []
+score_rf_sig_test = []
+score_rf_sig_train = []
+score_rf_bkg_train = []
+score_rf_bkg_test = []
 for i in range(len(ytst)): #xtst
   if ytst[i] == 1:
     score_mp_sig_test.append(OOBResults_test[i])
     score_bdt_sig_test.append(y_score_test_bdt[i,1])
+    score_rf_sig_test.append(y_score_test_rf[i,1])
   if ytst[i] == 0:
     score_mp_bkg_test.append(OOBResults_test[i])
     score_bdt_bkg_test.append(y_score_test_bdt[i,1])
+    score_rf_bkg_test.append(y_score_test_rf[i,1])
 for i in range(len(y)): #xtst
   if y[i] == 1:
     score_mp_sig_train.append(OOBResults_train[i])
     score_bdt_sig_train.append(y_score_training_bdt[i,1])
+    score_rf_sig_train.append(y_score_training_rf[i,1])
   if y[i] == 0:
     score_mp_bkg_train.append(OOBResults_train[i])
     score_bdt_bkg_train.append(y_score_training_bdt[i,1])
+    score_rf_bkg_train.append(y_score_training_rf[i,1])
 
 print(score_bdt_bkg_train)
 print(score_bdt_sig_train)
@@ -271,16 +300,31 @@ print(len(score_mp_sig_train))
 plt.figure()
 #plt.plot(score_mp_sig_test,score_bdt_sig_test,"o",color="darkblue",label="Signal Test events")
 plt.plot(score_mp_sig_train,score_bdt_sig_train,"o",color="darkorange",lw=lw,label="Signal Train events")
-#plt.plot(score_mp_bkg_test,score_bdt_bkg_test,"o",color="darkgreen",label="Signal Test events")
-plt.plot(score_mp_bkg_train,score_bdt_bkg_train,"o",color="purple",lw=lw,label="Signal Train events")
+#plt.plot(score_mp_bkg_test,score_bdt_bkg_test,"o",color="darkgreen",label="Bkg Test events")
+plt.plot(score_mp_bkg_train,score_bdt_bkg_train,"o",color="purple",lw=lw,label="Bkg Train events")
 plt.plot([0, 1], [0, 1], color="navy", lw=lw, linestyle="--")
 plt.xlim([0.0, 1.0])
 plt.ylim([0.0, 1.05])
 plt.xlabel("MLP score")
 plt.ylabel("BDT score")
 plt.legend(loc="lower right")
-plt.title("Receiver operating characteristic example")
-plt.savefig("comparison_scores.png", dpi=300)
+plt.title("Machine Learning Algorithm scores")
+plt.savefig("comparison_scores_mlp_bdt.png", dpi=300)
+plt.show()
+
+plt.figure()
+#plt.plot(score_mp_sig_test,score_bdt_sig_test,"o",color="darkblue",label="Signal Test events")
+plt.plot(score_mp_sig_train,score_rf_sig_train,"o",color="darkorange",lw=lw,label="Signal Train events")
+#plt.plot(score_mp_bkg_test,score_bdt_bkg_test,"o",color="darkgreen",label="Bkg Test events")
+plt.plot(score_mp_bkg_train,score_rf_bkg_train,"o",color="purple",lw=lw,label="Bkg Train events")
+plt.plot([0, 1], [0, 1], color="navy", lw=lw, linestyle="--")
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+plt.xlabel("MLP score")
+plt.ylabel("RF score")
+plt.legend(loc="lower right")
+plt.title("Machine Learning Algorithm scores")
+plt.savefig("comparison_scores_mlp_rf.png", dpi=300)
 plt.show()
 
 # =============================================================================
@@ -299,6 +343,8 @@ plt.show()
 plt.figure()
 plt.plot(fpr_test_bdt,tpr_test_bdt,color="darkblue",lw=lw,label="BDT Test ROC curve (area = %0.2f)" % roc_auc_test_bdt)
 plt.plot(fpr_train_bdt,tpr_train_bdt,color="green",lw=lw,label="BDT Train ROC curve (area = %0.2f)" % roc_auc_train_bdt)
+plt.plot(fpr_test_rf,tpr_test_rf,color="darkblue",lw=lw,label="RF Test ROC curve (area = %0.2f)" % roc_auc_test_rf)
+plt.plot(fpr_train_rf,tpr_train_rf,color="green",lw=lw,label="RF Train ROC curve (area = %0.2f)" % roc_auc_train_rf)
 plt.plot(fpr_test,tpr_test,color="darkorange",lw=lw,label="DNN Test ROC curve (area = %0.2f)" % roc_auc_test)
 plt.plot(fpr_train,tpr_train,color="purple",lw=lw,label="DNN Train ROC curve (area = %0.2f)" % roc_auc_train)
 plt.plot([0, 1], [0, 1], color="navy", lw=lw, linestyle="--")
