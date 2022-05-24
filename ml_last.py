@@ -162,7 +162,8 @@ rf = RandomForestClassifier( n_estimators=300,criterion='gini',
 rf.fit(x,y)
 
 bdt.fit(x,y)
-if EPOCHS < 100:  LOQUACIOUS=1
+print("Start training")
+if EPOCHS < 1000:  LOQUACIOUS=1
 cl1.fit(x,y,epochs=EPOCHS, batch_size=128, verbose=LOQUACIOUS, validation_split=0.1)#, callbacks = callback_list)
 cl1.evaluate(x,y)
 print("Training Done")
