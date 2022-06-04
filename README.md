@@ -18,7 +18,7 @@ $ pip install pandas
 In the `ML_COURSEBARI\` directory of this repository:
 
 ```bash
-$ python Classifier_FraBru.py
+$ python ml_exercise.py
 ```
 
 The command will produce `.png` files:
