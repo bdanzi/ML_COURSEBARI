@@ -1,6 +1,6 @@
 # ML_COURSEBARI
 
-The `ClassTrainingData5SigFigs.txt` file contains 30k examples, each having the first column with the true label and 23 inputs.
+The `NormDat_test.txt` and `NormDat_train.txt` files contain 30 000 randomized and normalized examples, each having the first column with the true label and 23 particle physics features.
 This is used by a ML class in Bari for testing different Machine Learning algorithms and their performance
 
 Darwin MacBook-Pro.local 21.4.0 Darwin Kernel Version 21.4.0: Fri Mar 18 00:47:26 PDT 2022; root:xnu-8020.101.4~15/RELEASE_ARM64_T8101 arm64
@@ -28,10 +28,13 @@ The command will produce `.png` files:
 
 Examples of the plot produced are stored in the `Plots_NNtraining\` directory for the usage of a Multi Layer Perceptron (MLP) and a Boosted Decision Tree (BDT) implemented by using scikit-learn package.
 
+# Your own Neural Network from scratch
+
 ```bash
 $ python NN_backpropagation_bdanzi.py
 ```
 
-The command will produce `.png` files:
+This python code has been written to implement the backpropagation process in Neural Network training not using already available open-source packages.
+The command will produce the `.png` file:
 - Loss function vs Epochs
 This code represents a home-made (no usage of numpy, scikit-learn,keras) Neural Network having one hidden layer.
