@@ -27,3 +27,11 @@ The command will produce `.png` files:
 - MLP score vs Trainsize `numbertrainingsamples_MLP_score.png`
 
 Examples of the plot produced are stored in the `Plots_NNtraining\` directory for the usage of a Multi Layer Perceptron (MLP) and a Boosted Decision Tree (BDT) implemented by using scikit-learn package.
+
+```bash
+$ python NN_backpropagation_bdanzi.py
+```
+
+The command will produce `.png` files:
+- Loss function vs Epochs
+This code represents a home-made (no usage of numpy, scikit-learn,keras) Neural Network having one hidden layer.
