@@ -17,7 +17,7 @@ Original file is located at
 """
 
 # KFJ14MAY2022; practice Keras DNN
-# BRUFRA16MAY2022; practice Keras DNN, scikit-learn BDT
+# Brunella D'Anzi - Jun 2022; practice Keras DNN, scikit-learn BDT
 import numpy as np
 from numpy import loadtxt
 from matplotlib import pyplot as plt
