@@ -31,7 +31,7 @@ Darwin MacBook-Pro.local 21.4.0 Darwin Kernel Version 21.4.0: Fri Mar 18 00:47:2
 ## Authors
 
 - [Brunella D'Anzi](https://github.com/bdanzi) (University and INFN Bari)
-- [Francesco Sivo](https://github.com/fsivo) (University and INFN Bari)
+- [Francesco Sivo](https://github.com/FrancescoSivo) (University and INFN Bari)
 
 ## Requirements
 
