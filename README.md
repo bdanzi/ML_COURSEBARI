@@ -10,12 +10,12 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="##ML_COURSEBARI">The exercise</a>
+      <a href="#ML_COURSEBARI">The exercise</a>
       <ul>
-        <li><a href="#Authors">Authors</a></li>
-        <li><a href="#Requirements">Requirements</a></li>
-        <li><a href="#Instructions">Instructions</a></li>
-        <li><a href="#Your-own-Neural-Network-from-scratch">Your own Neural Network from scratch</a></li>
+        <li><a href="##Authors">Authors</a></li>
+        <li><a href="##Requirements">Requirements</a></li>
+        <li><a href="##Instructions">Instructions</a></li>
+        <li><a href="##Your-own-Neural-Network-from-scratch">Your own Neural Network from scratch</a></li>
       </ul>
     </li>
   </ol>
