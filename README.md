@@ -12,10 +12,10 @@
     <li>
       <a href="#ML_COURSEBARI">ML_COURSEBARI</a>
       <ul>
-        <li><a href="## Authors">Authors</a></li>
-        <li><a href="## Requirements">Requirements</a></li>
-        <li><a href="## Instructions">Instructions</a></li>
-        <li><a href="## Your-own-Neural-Network-from-scratch">Your own Neural Network from scratch</a></li>
+        <li><a href="##Authors">Authors</a></li>
+        <li><a href="##Requirements">Requirements</a></li>
+        <li><a href="##Instructions">Instructions</a></li>
+        <li><a href="##Your-own-Neural-Network-from-scratch">Your own Neural Network from scratch</a></li>
       </ul>
     </li>
   </ol>
