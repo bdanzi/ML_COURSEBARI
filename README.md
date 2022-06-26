@@ -1,3 +1,10 @@
+<!-- PROJECT SHIELDS -->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![MIT][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
 # ML_COURSEBARI
 
 The `NormDat_test.txt` and `NormDat_train.txt` files contain 30 000 randomized and normalized examples, each having the first column with the true label and 23 particle physics features.
@@ -38,3 +45,24 @@ This python code has been written to implement the backpropagation process in Ne
 The command will produce the `.png` file:
 - Loss function vs Epochs
 This code represents a home-made (no usage of numpy, scikit-learn,keras) Neural Network having one hidden layer.
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/bdanzi/bdanzi.github.io.svg?style=for-the-badge
+[contributors-url]: https://github.com/bdanzi/bdanzi.github.io/contributors
+
+[forks-shield]: https://img.shields.io/github/forks/bdanzi/bdanzi.github.io.svg?style=for-the-badge
+[forks-url]: https://github.com/bdanzi/bdanzi.github.io/network/members
+
+[stars-shield]: https://img.shields.io/github/stars/bdanzi/bdanzi.github.io.svg?style=for-the-badge
+[stars-url]: https://github.com/bdanzi/bdanzi.github.io/stargazers
+
+[issues-shield]: https://img.shields.io/github/issues/bdanzi/bdanzi.github.io.svg?style=for-the-badge
+[issues-url]: https://github.com/bdanzi/bdanzi.github.io/issues
+
+[license-shield]: https://img.shields.io/github/license/bdanzi/bdanzi.github.io.svg?style=for-the-badge
+[license-url]: https://github.com/bdanzi/bdanzi.github.io/blob/main/LICENSE.txt
+
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/brunella-d-anzi
+
