@@ -57,7 +57,7 @@ The command will produce `.png` files:
 
 Examples of the plot produced are stored in the `Plots_NNtraining\` directory for the usage of a Multi Layer Perceptron (MLP) and a Boosted Decision Tree (BDT) implemented by using scikit-learn package.
 
-# Your own Neural Network from scratch
+## Your own Neural Network from scratch
 
 ```bash
 $ python NN_backpropagation_bdanzi.py
